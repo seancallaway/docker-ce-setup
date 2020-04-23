@@ -11,11 +11,10 @@
     gpgkey: https://download.docker.com/linux/centos/gpg
     enabled: yes
     state: present
-  
 
 - name: Install Docker and Ansible Requirements
   yum:
-    name: 
+    name:
       - docker-ce
       - docker-ce-cli
       - containerd.io

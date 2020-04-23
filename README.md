@@ -1,5 +1,7 @@
-docker-ce-setup
+docker_ce_setup
 ===============
+
+[![Build Status](https://travis-ci.org/seancallaway/docker-ce-setup.svg?branch=master)](https://travis-ci.org/seancallaway/docker-ce-setup)
 
 A role that installs Docker CE on an EL7 server and, optionally, creates an LVM volume for /var/lib/docker.
 
@@ -11,7 +13,7 @@ No special requirements. Note that this role requires root access, so either run
 ```yaml
 - hosts: docker
   roles:
-    - role: seancallaway.docker-ce-setup
+    - role: seancallaway.docker_ce_setup
       become: yes
 ```
 
@@ -58,7 +60,7 @@ Including an example of how to use your role (for instance, with variables passe
   vars:
     docker_volume_device: /dev/sdc
   roles:
-    - role: seancallaway.docker-ce-setup
+    - role: seancallaway.docker_ce_setup
 ```
 
 License
