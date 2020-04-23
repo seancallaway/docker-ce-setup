@@ -1,0 +1,6 @@
+---
+# defaults file for docker-ce-setup
+
+docker_volume_fstype: xfs
+docker_volume_lvm_vg: vg_docker
+docker_volume_lvm_lv: lv_var_lib_docker

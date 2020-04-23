@@ -1,0 +1,16 @@
+galaxy_info:
+  author: Sean Callaway
+  description: A role for installing and configuring Docker on a node
+  company: your company (optional)
+  license: license (MIT)
+  min_ansible_version: 2.8
+  platforms:
+  - name: EL
+    versions:
+    - 7
+  galaxy_tags:
+    - docker
+    - container
+
+dependencies: []
+  

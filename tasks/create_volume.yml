@@ -1,0 +1,32 @@
+---
+- name: Ensure Docker Volume Exists
+  block:
+  - name: Create Partition
+    parted:
+      device: "{{ docker_volume_device }}"
+      number: 1
+      flags: [ lvm ]
+      state: present
+  - name: Create Logical Volume Group
+    lvg:
+      vg: "{{ docker_volume_lvm_vg }}"
+      pvs: "{{ docker_volume_device }}1"
+  - name: Create Logical Volume
+    lvol:
+      vg: "{{ docker_volume_lvm_vg }}"
+      lv: "{{ docker_volume_lvm_lv }}"
+      size: +100%FREE
+  - name: Create filesysyem
+    filesystem:
+      fstype: "{{ docker_volume_fstype }}"
+      dev: "/dev/mapper/{{ docker_volume_lvm_vg }}-{{ docker_volume_lvm_lv }}"
+  - name: Create /var/lib/docker
+    file:
+      path: /var/lib/docker
+      state: directory
+  - name: Create fstab Entry
+    mount:
+      path: /var/lib/docker
+      src: "/dev/mapper/{{ docker_volume_lvm_vg }}-{{ docker_volume_lvm_lv }}"
+      fstype: "{{ docker_volume_fstype }}"
+      state: mounted
