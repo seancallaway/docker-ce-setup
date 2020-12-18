@@ -9,8 +9,8 @@ galaxy_info:
     - 7
   - name: Ubuntu
     vesions:
-      - bionic
-      - focal
+    - bionic
+    - focal
   galaxy_tags:
     - docker
     - container
