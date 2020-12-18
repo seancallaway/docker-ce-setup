@@ -7,6 +7,10 @@ galaxy_info:
   - name: EL
     versions:
     - 7
+  - name: Ubuntu
+    vesions:
+    - bionic
+    - focal
   galaxy_tags:
     - docker
     - container
