@@ -2,27 +2,11 @@
 - include: create_volume.yml
   when: docker_volume_device is defined
 
-- name: Add Docker-CE Repository
-  yum_repository:
-    name: docker-ce
-    description: Docker CE Stable Repo
-    baseurl: "https://download.docker.com/linux/centos/{{ ansible_distribution_major_version }}/$basearch/stable"
-    gpgcheck: yes
-    gpgkey: https://download.docker.com/linux/centos/gpg
-    enabled: yes
-    state: present
+- include: el7.yml
+  when: ansible_os_family | lower == 'redhat'
 
-- name: Install Docker and Ansible Requirements
-  yum:
-    name:
-      - docker-ce
-      - docker-ce-cli
-      - containerd.io
-      - python-docker-py
-    state: present
-  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
-  notify:
-    - start docker
+- include: ubuntu.yml
+  when: ansible_os_family | lower == 'debian'
 
 - name: Ensure the Docker group exists.
   group:

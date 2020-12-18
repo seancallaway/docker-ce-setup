@@ -1,0 +1,21 @@
+---
+- name: Add Docker-CE Repository
+  yum_repository:
+    name: docker-ce
+    description: Docker CE Stable Repo
+    baseurl: "https://download.docker.com/linux/centos/{{ ansible_distribution_major_version }}/$basearch/stable"
+    gpgcheck: yes
+    gpgkey: https://download.docker.com/linux/centos/gpg
+    enabled: yes
+    state: present
+
+- name: Install Docker and Ansible Requirements
+  yum:
+    name:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+      - python-docker-py
+    state: present
+  notify:
+    - start docker
