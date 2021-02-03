@@ -5,7 +5,7 @@
 - include: el7.yml
   when: ansible_os_family | lower == 'redhat'
 
-- include: ubuntu.yml
+- include: debian.yml
   when: ansible_os_family | lower == 'debian'
 
 - name: Ensure the Docker group exists.

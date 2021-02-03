@@ -1,0 +1,26 @@
+---
+- name: Set Key and Repo URLs
+  set_fact:
+    apt_key_url: "https://download.docker.com/linux/{{ 'ubuntu' if ansible_distribution == 'Ubuntu' else 'debian' }}/gpg"
+    apt_repo: "deb [arch=amd64] https://download.docker.com/linux/{{ 'ubuntu' if ansible_distribution == 'Ubuntu' else 'debian' }} {{ ansible_distribution_release }} stable"
+
+- name: Add Docker CE Key
+  apt_key:
+    url: "{{ apt_key_url }}"
+    state: present
+
+- name: Add Docker CE Stable Repo
+  apt_repository:
+    repo: "{{ apt_repo }}"
+    state: present
+    update_cache: yes
+
+- name: Install Required Packages
+  apt:
+    name:
+      - docker-ce 
+      - docker-ce-cli 
+      - containerd.io
+    state: present
+  notify:
+    - start docker
