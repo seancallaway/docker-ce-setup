@@ -3,7 +3,7 @@ docker_ce_setup
 
 [![Build Status](https://travis-ci.org/seancallaway/docker-ce-setup.svg?branch=master)](https://travis-ci.org/seancallaway/docker-ce-setup)
 
-A role that installs Docker CE on an EL7 or Ubuntu server and, optionally, creates an LVM volume for /var/lib/docker.
+A role that installs Docker CE on an EL7, Debian, or, Ubuntu server and, optionally, creates an LVM volume for /var/lib/docker.
 
 Requirements
 ------------
