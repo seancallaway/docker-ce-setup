@@ -11,9 +11,12 @@ galaxy_info:
     vesions:
     - bionic
     - focal
+  - name: Debian
+    versions:
+    - 9
+    - 10
   galaxy_tags:
     - docker
     - container
 
 dependencies: []
-  
